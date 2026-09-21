@@ -69,12 +69,37 @@
         .carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
+        /* Mengubah tema navbar agar sama dengan footer */
+        .navbar-dark-custom {
+            background-color: #1a252f !important;
+        }
+        .navbar-dark-custom .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .navbar-dark-custom .navbar-nav .nav-link:hover, 
+        .navbar-dark-custom .navbar-nav .nav-link.active {
+            color: #ffffff !important;
+        }
+        .navbar-dark-custom .dropdown-menu {
+            background-color: #1a252f;
+            border-color: #2c3e50;
+        }
+        .navbar-dark-custom .dropdown-menu .dropdown-item {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .navbar-dark-custom .dropdown-menu .dropdown-item:hover {
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+        .navbar-dark-custom .dropdown-divider {
+            border-color: #2c3e50;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top">
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark-custom shadow-sm sticky-top">
       <div class="container-fluid px-4">
         <a class="navbar-brand" href="#">
             <img src="images/logo_BSU.png" alt="logo BSU">
