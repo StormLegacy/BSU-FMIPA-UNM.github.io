@@ -104,3 +104,9 @@
             color: #555555;
             font-size: 1.1rem;
         }
+        .carousel-container-box {
+            border: 4px solid #ffffff; /* Bingkai putih tebal agar kontras */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); /* Bayangan yang lebih dalam dan tegas */
+            border-radius: 16px; /* Sudut lebih melengkung */
+            background-color: #ffffff;
+        }

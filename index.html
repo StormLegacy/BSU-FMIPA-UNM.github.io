@@ -54,39 +54,38 @@
     <!-- Akhir Navbar -->
 
 <!-- Carousel Banner dengan Opacity & Teks di Atas Gambar -->
-<div class="container my-4">
-        <div id="carouselExampleAutoplaying" class="carousel slide shadow-sm rounded overflow-hidden position-relative" data-bs-ride="carousel">
+    <div class="container my-4">
+        <div id="carouselExampleAutoplaying" class="carousel slide carousel-container-box overflow-hidden position-relative" data-bs-ride="carousel">
 
-          <div class="carousel-inner">
+        <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="images/img1 (2).jpeg" class="d-block w-80 mx-auto" alt="foto 1">
+                <img src="images/img1 (2).jpeg" class="d-block w-80 mx-auto" alt="foto 1">
             </div>
-            <div class="carousel-item">
-              <img src="images/img1 (1).jpeg" class="d-block w-100 mx-auto" alt="foto 2">
+                <div class="carousel-item">
+                    <img src="images/img1 (1).jpeg" class="d-block w-100 mx-auto" alt="foto 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/img1 (11).jpeg" class="d-block w-100 mx-auto" alt="foto 3">
+                </div>
             </div>
-            <div class="carousel-item">
-              <img src="images/img1 (11).jpeg" class="d-block w-100 mx-auto" alt="foto 3">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
 
     <!--tagline-->
-    <section class="tagline-section text-center">
+    <section class="tagline-section text-center py-3">
         <div class="container">
-            <h1 class="display-5 mb-3">Bank Sampah Unit<br>Fakultas MIPA UNM</h1>
-            <p class="lead mb-4">Sustainable Waste Management Part of FMIPA UNM <a href="https://www.instagram.com/fmipaunm/" class="text-success text-decoration-none fw-bold">@fmipaunm</a></p>
+            <p class="lead mb-3">Sustainable Waste Management Part of FMIPA UNM <a href="https://www.instagram.com/fmipaunm/" class="text-success text-decoration-none fw-bold">@fmipaunm</a></p>
             <div>
-                <a href="#" class="btn btn-green btn-lg px-4 me-2">BERITA</a>
-                <a href="#" class="btn btn-outline-success btn-lg px-4">HUBUNGI KAMI</a>
+                <a href="news.html" class="btn btn-green btn-lg px-4 me-2">BERITA</a>
+                <a href="contact.html" class="btn btn-outline-success btn-lg px-4">HUBUNGI KAMI</a>
             </div>
         </div>
     </section>
@@ -157,25 +156,25 @@
                         <a href="https://www.instagram.com/bsu.fmipa_unm/" class="text-white"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <h5>Links</h5>
                     <ul class="list-unstyled small">
-                        <li><a href="index.html" class="text-decoration-none text-light">Beranda</a></li>
-                        <li><a href="about.html" class="text-decoration-none text-light">Tentang</a></li>
-                        <li><a href="news.html" class="text-decoration-none text-light">Berita</a></li>
-                        <li><a href="#" class="text-decoration-none text-light">Testimoni</a></li>
-                        <li><a href="contact.html" class="text-decoration-none text-light">Hubungi Kami</a></li>
+                        <li><a href="#" class="text-decoration-none text-light mb-1 d-block">Beranda</a></li>
+                        <li><a href="#" class="text-decoration-none text-light mb-1 d-block">Tentang Kami</a></li>
+                        <li><a href="#" class="text-decoration-none text-light mb-1 d-block">Layanan</a></li>
+                        <li><a href="#" class="text-decoration-none text-light mb-1 d-block">Edukasi Sampah</a></li>
+                        <li><a href="#" class="text-decoration-none text-light mb-1 d-block">Hubungi Kami</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h5>About</h5>
+                <div class="col-md-4">
+                    <h5>Tentang</h5>
                     <p class="small text-light">BSU FMIPA UNM (Bank Sampah Unit Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Negeri Makassar) diresmikan pada Rabu, 10 Juni 2026.</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Kirim Saran</h5>
                     <div class="mb-3">
                         <input type="email" class="form-control mb-2" placeholder="Masukkan Email Anda">
-                        <input type="text" class="form-control mb-2" placeholder="Masukkan Saran Anda">
+                        <textarea class="form-control mb-2" placeholder="Masukkan Saran Anda" id="floatingTextarea2" style="height: 100px"></textarea>
                         <button class="btn btn-secondary w-100">Kirim</button>
                     </div>
                 </div>
@@ -189,5 +188,6 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
