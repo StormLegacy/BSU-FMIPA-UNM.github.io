@@ -1,0 +1,106 @@
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-green:hover {
+            background-color: #218838;
+            color: white;
+        }
+        .stats-box {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .service-card {
+            border: 2px solid #28a745;
+            border-radius: 12px;
+            padding: 30px;
+            background: white;
+            transition: 0.3s;
+        }
+        .about-dark {
+            background-color: #2c3e50;
+            color: white;
+            padding: 80px 0;
+        }
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 50px 0 20px 0;
+        }
+        /* Merapikan Logo Navbar agar proporsional */
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+        /* Mengatur Zona Aman Tinggi Carousel */
+        .carousel-item img {
+            height: 480px;
+            object-fit: cover;
+            object-position: center;
+        }
+        /* Membuat tombol navigasi carousel lebih kontras */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.6);
+            background-size: 50%, 50%;
+            border-radius: 50% 50%; 
+            width: 45px;
+            height: 45px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); 
+        }
+        .carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* Mengubah tema navbar agar sama dengan footer */
+        .navbar-dark-custom {
+            background-color: #1a252f !important;
+        }
+        .navbar-dark-custom .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .navbar-dark-custom .navbar-nav .nav-link:hover, 
+        .navbar-dark-custom .navbar-nav .nav-link.active {
+            color: #ffffff !important;
+        }
+        .navbar-dark-custom .dropdown-menu {
+            background-color: #1a252f;
+            border-color: #2c3e50;
+        }
+        .navbar-dark-custom .dropdown-menu .dropdown-item {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .navbar-dark-custom .dropdown-menu .dropdown-item:hover {
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+        .navbar-dark-custom .dropdown-divider {
+            border-color: #2c3e50;
+        }
+        .service-card {
+            border: 2px solid #28a745;
+            border-radius: 12px;
+            padding: 30px;
+            background: white;
+            transition: 0.3s;
+            height: 100%; /* Membuat tinggi kotak rata secara otomatis */
+        }
+        /* Styling untuk Tagline Section */
+        .tagline-section {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+        .tagline-section h1 {
+            color: #1a252f;
+            font-weight: 800;
+        }
+        .tagline-section p {
+            color: #555555;
+            font-size: 1.1rem;
+        }
