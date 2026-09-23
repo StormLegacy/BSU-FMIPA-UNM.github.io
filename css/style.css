@@ -178,14 +178,33 @@
             padding: 80px 20px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
         }
+        /* Perbaikan Navbar & Tombol Toggler Mobile */
+        .navbar-dark-custom {
+            background-color: #1a252f !important;
+        }
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5) !important;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+        
+        /* Perbaikan Logo di Navbar */
+        .navbar-brand img {
+            height: 40px !important;
+            width: auto !important;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        /* Penyesuaian Spasi Kartu Layanan agar tidak renggang di HP */
         @media (max-width: 768px) {
-            .carousel-caption-custom h1 {
-                font-size: 1.6rem !important;
+            .service-card {
+                margin-bottom: 15px;
             }
-            .carousel-caption-custom p {
-                font-size: 0.9rem !important;
-            }
-            .carousel-inner img {
-                height: 320px;
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
             }
         }
+        
