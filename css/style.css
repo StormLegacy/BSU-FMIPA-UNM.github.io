@@ -178,3 +178,14 @@
             padding: 80px 20px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
         }
+        @media (max-width: 768px) {
+            .carousel-caption-custom h1 {
+                font-size: 1.6rem !important;
+            }
+            .carousel-caption-custom p {
+                font-size: 0.9rem !important;
+            }
+            .carousel-inner img {
+                height: 320px;
+            }
+        }
