@@ -498,7 +498,95 @@ function initGeneralFormFeedback() {
 }
 
 // ==========================================
-// 5. INISIALISASI SAAT DOM SIAP
+// 5. EFEK SCROLL & KLIK SEDERHANA
+// ==========================================
+function initScrollAndClickEffects() {
+    // 1) Scroll Reveal (Fade-Up saat elemen masuk layar)
+    const revealTargets = document.querySelectorAll(
+        ".service-card, .news-card, .org-card, .testimonial-card, .step-card, .profile-card, .stats-box, .eco-about-photo-frame, .banner-box-style"
+    );
+
+    if ("IntersectionObserver" in window && revealTargets.length > 0) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("eco-revealed");
+                    setTimeout(() => {
+                        entry.target.style.transitionDelay = "0ms";
+                    }, 650);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -24px 0px" });
+
+        revealTargets.forEach((el, idx) => {
+            el.classList.add("eco-reveal");
+            el.style.transitionDelay = `${(idx % 4) * 60}ms`;
+            observer.observe(el);
+        });
+    }
+
+    // 2) Navbar Shadow saat Scroll + Tombol Kembali ke Atas (Back to Top)
+    const navbar = document.querySelector(".navbar-dark-custom");
+    let backToTopBtn = document.getElementById("ecoBackToTop");
+    if (!backToTopBtn) {
+        backToTopBtn = document.createElement("button");
+        backToTopBtn.id = "ecoBackToTop";
+        backToTopBtn.type = "button";
+        backToTopBtn.className = "eco-back-to-top";
+        backToTopBtn.setAttribute("aria-label", "Kembali ke atas");
+        backToTopBtn.title = "Kembali ke atas";
+        backToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+        document.body.appendChild(backToTopBtn);
+
+        backToTopBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    function handleScrollState() {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (navbar) navbar.classList.toggle("navbar-scrolled", y > 24);
+        if (backToTopBtn) backToTopBtn.classList.toggle("show", y > 300);
+    }
+    window.addEventListener("scroll", handleScrollState, { passive: true });
+    handleScrollState();
+
+    // 3) Smooth Scroll untuk tautan anchor internal (#section)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (!href || href === "#" || this.hasAttribute("data-bs-toggle")) return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+    });
+
+    // 4) Efek Klik Ripple sederhana pada tombol utama
+    const clickButtons = document.querySelectorAll(
+        ".btn-green, .btn-auth-nav, .btn-hero-eco, .btn-hero-outline, .btn-outline-success, .btn-whatsapp"
+    );
+    clickButtons.forEach(btn => {
+        btn.classList.add("eco-ripple-host");
+        btn.addEventListener("click", function (e) {
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const ripple = document.createElement("span");
+            ripple.className = "eco-ripple-wave";
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 520);
+        });
+    });
+}
+
+// ==========================================
+// 6. INISIALISASI SAAT DOM SIAP
 // ==========================================
 document.addEventListener("DOMContentLoaded", function () {
     // Efek interaktif hover kartu layanan
@@ -522,4 +610,5 @@ document.addEventListener("DOMContentLoaded", function () {
     initGlobalSearch();
     initProfileDashboard();
     initGeneralFormFeedback();
+    initScrollAndClickEffects();
 });

@@ -1042,3 +1042,90 @@ footer ul.list-unstyled li a:hover {
         padding-right: 15px;
     }
 }
+
+/* =========================================
+   EFEK SCROLL & KLIK SEDERHANA
+   ========================================= */
+.eco-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    will-change: opacity, transform;
+}
+
+.eco-reveal.eco-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar-dark-custom.navbar-scrolled {
+    box-shadow: 0 8px 24px rgba(31, 46, 30, 0.12) !important;
+}
+
+/* Tombol Back to Top */
+.eco-back-to-top {
+    position: fixed;
+    right: 26px;
+    bottom: 26px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background-color: var(--eco-primary);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(20, 42, 18, 0.28);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease, background-color 0.2s ease;
+    z-index: 1030;
+}
+
+.eco-back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.eco-back-to-top:hover {
+    background-color: var(--eco-primary-hover);
+    transform: translateY(-3px);
+}
+
+/* Efek Ripple & Press saat Klik Tombol */
+.eco-ripple-host {
+    position: relative;
+    overflow: hidden;
+}
+
+.eco-ripple-host:active {
+    transform: scale(0.97);
+}
+
+.eco-ripple-wave {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.42);
+    transform: scale(0);
+    animation: ecoRippleAnim 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ecoRippleAnim {
+    to {
+        transform: scale(2.8);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .eco-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
