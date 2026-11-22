@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - Bank Sampah Unit FMIPA UNM</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/Logo-UNM 2.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="eco-framed-body">
+<div class="eco-page-shell">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark-custom shadow-sm sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo_BSU.png" alt="logo BSU" style="height: 45px; width: auto; object-fit: contain;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="work.html">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">Berita</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Lainnya
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about.html">Tentang Kami</a></li>
+                            <li><a class="dropdown-item" href="testimoni.html">Testimoni</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="contact.html">Hubungi Kami</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex align-items-center me-2 my-2 my-lg-0 navbar-search-form" role="search">
+                    <input class="form-control form-control-sm me-2" type="search" placeholder="Cari sesuatu..." aria-label="Search"/>
+                    <button class="btn btn-green btn-sm btn-search-nav" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i> Cari
+                    </button>
+                </form>
+                <div class="auth-nav-container">
+                    <!-- Dynamic auth dropdown via script.js -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Dashboard Container -->
+    <div class="container my-5" id="profileDashboardContainer">
+        
+        <!-- Header Banner Dashboard -->
+        <div class="p-4 p-md-5 rounded-4 mb-4 text-white shadow-sm" style="background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%); border-left: 6px solid #28a745;">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <span class="badge bg-success px-3 py-2 text-uppercase mb-2"><i class="fa-solid fa-shield-halved me-1"></i> Area Pengguna / Nasabah Terverifikasi</span>
+                    <h2 class="fw-bold mb-1">Buku Tabungan Sampah Civitas MIPA</h2>
+                    <p class="text-light-50 mb-0 small">Pantau saldo tabungan, perolehan poin reward, dan catatan histori penyetoran sampah Anda secara transparan.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success fw-bold" data-bs-toggle="modal" data-bs-target="#modalSetorSampah">
+                        <i class="fa-solid fa-plus-circle me-1"></i> Setor Sampah Baru
+                    </button>
+                    <button class="btn btn-outline-light fw-bold" onclick="logoutBSU()">
+                        <i class="fa-solid fa-arrow-right-from-bracket me-1"></i> Keluar (Logout)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- 1. BIODATA CIVITAS AKADEMIKA -->
+            <div class="col-lg-4">
+                <div class="profile-card p-4 h-100">
+                    <div class="text-center pb-4 border-bottom mb-4">
+                        <div class="position-relative d-inline-block mb-3">
+                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto shadow" style="width: 100px; height: 100px; font-size: 2.5rem; font-weight: bold;">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <span class="position-absolute bottom-0 end-0 badge rounded-pill bg-success border border-white p-2">
+                                <i class="fa-solid fa-check"></i>
+                            </span>
+                        </div>
+                        <h5 class="fw-bold text-dark mb-1" id="profileNama">Andi M. Resky Pratama</h5>
+                        <span class="badge bg-success-subtle text-success fw-semibold" id="profileStatus">Mahasiswa Aktif</span>
+                        <div class="text-muted small mt-2">No. Rekening BSU: <span class="fw-bold font-monospace text-dark" id="profileNoRek">BSU-MIPA-2024-042</span></div>
+                    </div>
+
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-id-card text-success me-2"></i>Biodata Civitas Akademika</h6>
+                    
+                    <div class="mb-3">
+                        <div class="text-muted small">NIM / NIP</div>
+                        <div class="fw-bold text-dark" id="profileNIM">210101502001</div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="text-muted small">Program Studi</div>
+                        <div class="fw-bold text-dark" id="profileProdi">Pendidikan Kimia</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-muted small">Fakultas</div>
+                        <div class="fw-bold text-dark" id="profileFakultas">FMIPA UNM Kampus Parantambung</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="text-muted small">Email Kampus</div>
+                        <div class="fw-bold text-dark text-break small" id="profileEmail">a.resky@student.unm.ac.id</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="text-muted small">Nomor WhatsApp / HP</div>
+                        <div class="fw-bold text-dark" id="profilePhone">+62 812-3456-7890</div>
+                    </div>
+
+                    <button class="btn btn-outline-secondary btn-sm w-100 fw-semibold" data-bs-toggle="modal" data-bs-target="#modalEditBiodata">
+                        <i class="fa-solid fa-user-pen me-1"></i> Perbarui Biodata
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. KARTU STATISTIK & SALDO TABUNGAN SAMPAH -->
+            <div class="col-lg-8">
+                
+                <div class="row g-3 mb-4">
+                    <!-- Saldo Tabungan -->
+                    <div class="col-md-6">
+                        <div class="stat-card-custom stat-card-green">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-uppercase small fw-bold opacity-75">Saldo Tabungan Sampah</span>
+                                <i class="fa-solid fa-wallet fs-3 opacity-75"></i>
+                            </div>
+                            <h2 class="fw-bold mb-1" id="profileSaldo">Rp 185.000</h2>
+                            <p class="small opacity-75 mb-3">Tersedia untuk ditarik atau ditransfer</p>
+                            <button class="btn btn-light btn-sm fw-bold text-success px-3" data-bs-toggle="modal" data-bs-target="#modalTarikSaldo">
+                                <i class="fa-solid fa-hand-holding-dollar me-1"></i> Tarik Tunai / Transfer
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Total Poin Reward -->
+                    <div class="col-md-6">
+                        <div class="stat-card-custom stat-card-blue">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-uppercase small fw-bold opacity-75">Total Poin Reward</span>
+                                <i class="fa-solid fa-coins fs-3 opacity-75"></i>
+                            </div>
+                            <h2 class="fw-bold mb-1" id="profilePoin">370 Poin</h2>
+                            <p class="small opacity-75 mb-3">Tukarkan dengan produk eco-enzyme / bibit</p>
+                            <button class="btn btn-light btn-sm fw-bold text-primary px-3" onclick="alert('Fitur Penukaran Reward: Anda memiliki 370 Poin!\nPoin dapat ditukar langsung di Sekretariat BSU Parantambung dengan:\n1. 1 Botol Eco-Enzyme 500ml (100 Poin)\n2. Bibit Tanaman Obat/Hias (150 Poin)\n3. Totebag Ramah Lingkungan BSU (200 Poin)')">
+                                <i class="fa-solid fa-gift me-1"></i> Tukar Poin Reward
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Akumulasi Sampah Organik -->
+                    <div class="col-md-6">
+                        <div class="stat-card-custom stat-card-orange">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-uppercase small fw-bold opacity-75">Sampah Organik Disetor</span>
+                                <i class="fa-solid fa-leaf fs-3 opacity-75"></i>
+                            </div>
+                            <h3 class="fw-bold mb-1" id="profileOrganik">16.0 Kg</h3>
+                            <p class="small opacity-75 mb-0">Diproses menjadi kompos & eco-enzyme</p>
+                        </div>
+                    </div>
+
+                    <!-- Akumulasi Sampah Anorganik -->
+                    <div class="col-md-6">
+                        <div class="stat-card-custom stat-card-dark">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-uppercase small fw-bold opacity-75">Sampah Anorganik Disetor</span>
+                                <i class="fa-solid fa-recycle fs-3 opacity-75"></i>
+                            </div>
+                            <h3 class="fw-bold mb-1" id="profileAnorganik">26.5 Kg</h3>
+                            <p class="small opacity-75 mb-0">Botol plastik, karton kardus, dan kaleng</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. RIWAYAT PENYETORAN SAMPAH -->
+                <div class="profile-card p-4">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+                        <div>
+                            <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-clock-rotate-left text-success me-2"></i>Riwayat Penyetoran Sampah</h5>
+                            <small class="text-muted">Daftar transaksi penimbangan dan konversi saldo tabungan Anda</small>
+                        </div>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-success active btn-history-filter" data-filter="semua">Semua</button>
+                            <button type="button" class="btn btn-outline-secondary btn-history-filter" data-filter="organik">Organik</button>
+                            <button type="button" class="btn btn-outline-secondary btn-history-filter" data-filter="anorganik">Anorganik</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="small">Tanggal</th>
+                                    <th class="small">ID Setor</th>
+                                    <th class="small">Kategori</th>
+                                    <th class="small">Rincian Jenis</th>
+                                    <th class="small text-end">Berat</th>
+                                    <th class="small text-end">Nilai Saldo</th>
+                                    <th class="small text-end">Poin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <!-- Dynamic rows rendered by script.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="pt-3 mt-3 border-top">
+                        <small class="text-muted"><i class="fa-solid fa-circle-info text-success me-1"></i> Data diperbarui otomatis setiap penyetoran diverifikasi petugas BSU.</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL 1: SIMULASI SETOR SAMPAH -->
+    <div class="modal fade" id="modalSetorSampah" tabindex="-1" aria-labelledby="modalSetorLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalSetorLabel">
+                        <i class="fa-solid fa-scale-balanced text-success me-2"></i>Simulasi Penyetoran Sampah
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted small mb-3">Simulasikan penimbangan sampah nasabah. Nilai saldo rupiah dan poin reward akan otomatis ditambahkan ke akun Anda.</p>
+                    
+                    <form id="formSimulasiSetor">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Kategori Sampah</label>
+                            <select class="form-select" id="setorKategori" required>
+                                <option value="Anorganik" selected>Sampah Anorganik (Plastik, Kertas, Logam)</option>
+                                <option value="Organik">Sampah Organik (Sisa Buah, Sayur, Dedaunan)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Rincian Jenis Sampah</label>
+                            <select class="form-select" id="setorJenis" required>
+                                <option value="Botol Plastik PET Bersih" selected>Botol Plastik PET Bersih (Rp 4.000/Kg | +8 Poin)</option>
+                                <option value="Gelas Plastik Mineral">Gelas Plastik Mineral (Rp 3.500/Kg | +7 Poin)</option>
+                                <option value="Kardus Bekas Paket Tebal">Kardus Bekas Paket Tebal (Rp 3.000/Kg | +6 Poin)</option>
+                                <option value="Kertas HVS Bekas Laporan/Ujian">Kertas HVS Bekas Laporan/Ujian (Rp 2.500/Kg | +5 Poin)</option>
+                                <option value="Kaleng Minuman Aluminium">Kaleng Minuman Aluminium (Rp 10.000/Kg | +20 Poin)</option>
+                                <option value="Sisa Kulit Buah Segar (Bahan Eco-Enzyme)">Sisa Kulit Buah Segar (Bahan Eco-Enzyme) (Rp 1.000/Kg | +3 Poin)</option>
+                                <option value="Dedaunan Kering Gugur Kampus">Dedaunan Kering Gugur Kampus (Rp 1.000/Kg | +3 Poin)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Berat Sampah (Kilogram / Kg)</label>
+                            <div class="input-group">
+                                <input type="number" step="0.1" min="0.1" class="form-control" id="setorBerat" placeholder="Contoh: 3.5" required>
+                                <span class="input-group-text bg-light fw-bold">Kg</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-light rounded-3 border mb-3">
+                            <small class="text-muted d-block mb-1">Lokasi Penerimaan:</small>
+                            <div class="fw-bold small text-dark"><i class="fa-solid fa-location-dot text-success me-1"></i> Ruang BSU FMIPA UNM Parantambung</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-green w-100 py-2 fw-bold">
+                            <i class="fa-solid fa-circle-check me-1"></i> Catat & Tambahkan ke Buku Tabungan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: TARIK SALDO TABUNGAN -->
+    <div class="modal fade" id="modalTarikSaldo" tabindex="-1" aria-labelledby="modalTarikLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalTarikLabel">
+                        <i class="fa-solid fa-money-bill-transfer text-success me-2"></i>Pencairan Saldo Tabungan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formTarikSaldo">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nominal Penarikan (Rp)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light fw-bold">Rp</span>
+                                <input type="number" class="form-control" id="tarikNominal" placeholder="Minimal Rp 10.000" min="10000" required>
+                            </div>
+                            <small class="text-muted">Maksimal penarikan sesuai saldo saat ini.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Metode Pencairan</label>
+                            <select class="form-select" id="tarikMetode" required>
+                                <option>Tunai Langsung di Kasir BSU FMIPA Parantambung</option>
+                                <option>Transfer Bank BNI / Mandiri / BRI</option>
+                                <option>E-Wallet (Dana / GoPay / ShopeePay / OVO)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nomor Rekening / No. HP E-Wallet</label>
+                            <input type="text" class="form-control" placeholder="Contoh: 081234567890 / 1234567890" required>
+                        </div>
+                        <button type="submit" class="btn btn-green w-100 py-2 fw-bold">
+                            <i class="fa-solid fa-paper-plane me-1"></i> Ajukan Penarikan Saldo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: PERBARUI BIODATA -->
+    <div class="modal fade" id="modalEditBiodata" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title fw-bold" id="modalEditLabel">
+                        <i class="fa-solid fa-user-pen text-success me-2"></i>Perbarui Biodata Nasabah
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formEditBiodata" onsubmit="event.preventDefault(); const u = getBSUUser(); u.nama = document.getElementById('editNama').value; u.phone = document.getElementById('editPhone').value; u.prodi = document.getElementById('editProdi').value; saveBSUUser(u); alert('Biodata berhasil diperbarui!'); location.reload();">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="editNama" value="Andi M. Resky Pratama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Program Studi</label>
+                            <input type="text" class="form-control" id="editProdi" value="Pendidikan Kimia" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nomor WhatsApp / HP</label>
+                            <input type="text" class="form-control" id="editPhone" value="+62 812-3456-7890" required>
+                        </div>
+                        <button type="submit" class="btn btn-green w-100 py-2 fw-bold">Simpan Perubahan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Tanpa Kotak Kirim Saran) -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-5">
+                    <h5>Hubungi Kami</h5>
+                    <p class="small text-light mb-2"><i class="fa-solid fa-location-dot me-2"></i>Lokasi <br>
+                    FMIPA UNM Parantambung Campus Daeng Tata Street, Makassar, South Sulawesi, Indonesia</p>
+                    <p class="small text-light mb-1"><i class="fa-solid fa-phone me-2"></i>+62 853-4001-2245 (Humaerah)</p>
+                    <p class="small text-light mb-2"><i class="fa-solid fa-phone me-2"></i>+62 853-1470-0612 (Amel)</p>
+                    <p class="small text-light mb-3"><i class="fa-solid fa-envelope me-2"></i>demo@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/bsu.fmipa_unm/" target="_blank" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="about.html" class="text-decoration-none text-light mb-1 d-block">Tentang Kami</a></li>
+                        <li><a href="work.html" class="text-decoration-none text-light mb-1 d-block">Layanan</a></li>
+                        <li><a href="news.html" class="text-decoration-none text-light mb-1 d-block">Berita</a></li>
+                        <li><a href="testimoni.html" class="text-decoration-none text-light mb-1 d-block">Testimoni</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-light mb-1 d-block">Hubungi Kami</a></li>
+                        <li><a href="https://medigrafia.com/edukasi-pengelolaan-sampah-membangun-kesadaran-lingkungan/#gsc.tab=0" target="_blank" class="text-decoration-none text-light mb-1 d-block">Edukasi Sampah</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 col-md-4">
+                    <h5>Tentang Singkat</h5>
+                    <p class="small text-light lh-base mb-3">BSU FMIPA UNM (Bank Sampah Unit Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Negeri Makassar) diresmikan pada Rabu, 10 Juni 2026 sebagai sarana edukasi dan inovasi lingkungan sivitas akademika.</p>
+                    <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.06); border-left: 3px solid #28a745;">
+                        <span class="small text-light d-block fw-semibold"><i class="fa-solid fa-shield-halved text-success me-1"></i> Area Nasabah Terverifikasi</span>
+                        <span class="small text-muted">Buku tabungan sampah digital untuk transparansi pemilahan dan akumulasi saldo sivitas akademika.</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center text-light small">
+                2026 All Rights Reserved. Bank Sampah Unit (BSU) FMIPA UNM
+            </div>
+        </div>
+    </footer>
+</div><!-- /.eco-page-shell -->
+    <!-- Akhir Footer -->
+
+    <!-- CDN jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
