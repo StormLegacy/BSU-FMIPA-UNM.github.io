@@ -37,24 +37,13 @@ body.eco-framed-body {
     min-height: 100vh;
 }
 
-/* Modal / Wadah Utama Halaman dengan Efek Glassmorphism */
+/* Modal / Wadah Utama Halaman (Warna Putih-Krem Bersih Sebelumnya) */
 .eco-page-shell {
     max-width: 1320px;
     margin: 0 auto;
-    background: linear-gradient(
-        145deg,
-        rgba(244, 252, 243, 0.80) 0%,
-        rgba(232, 246, 230, 0.72) 52%,
-        rgba(240, 250, 238, 0.78) 100%
-    );
-    backdrop-filter: blur(24px) saturate(165%);
-    -webkit-backdrop-filter: blur(24px) saturate(165%);
-    border: 1.5px solid rgba(255, 255, 255, 0.48);
+    background-color: var(--eco-surface);
     border-radius: 28px;
-    box-shadow:
-        0 30px 75px rgba(1, 20, 9, 0.52),
-        inset 0 1px 1px rgba(255, 255, 255, 0.72),
-        inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+    box-shadow: 0 28px 65px rgba(1, 20, 9, 0.45);
     overflow-x: clip;
 }
 
@@ -102,20 +91,24 @@ body.eco-framed-body {
 }
 
 /* =========================================
-   NAVBAR GLASS BERSIH (REFERENSI TOPBAR)
+   NAVBAR PUTIH SOLID (ANTI KEBOCORAN GAMBAR SAAT SCROLL)
    ========================================= */
 .navbar-dark-custom {
-    background-color: rgba(255, 255, 255, 0.74) !important;
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    background-color: #FFFFFF !important;
+    border-bottom: 1px solid #E8F0E2;
     padding-top: 12px;
     padding-bottom: 12px;
+    transition: border-radius 0.2s ease, box-shadow 0.2s ease;
 }
 
 .eco-page-shell > .navbar-dark-custom {
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
+}
+
+.eco-page-shell > .navbar-dark-custom.navbar-scrolled {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .navbar-brand {
@@ -524,10 +517,10 @@ body.eco-framed-body {
 }
 
 /* =========================================
-   SPLIT ABOUT SECTION (WELCOME STYLE GLASS)
+   SPLIT ABOUT SECTION (WELCOME STYLE)
    ========================================= */
 .eco-about-section {
-    background-color: transparent;
+    background-color: var(--eco-surface);
     padding: 78px 0 72px 0;
 }
 
@@ -605,36 +598,26 @@ body.eco-framed-body {
    SOFT SAGE-GREEN SECTION (LAYANAN & BERITA)
    ========================================= */
 .eco-sage-section {
-    background: linear-gradient(
-        180deg,
-        rgba(222, 240, 214, 0.56) 0%,
-        rgba(235, 246, 229, 0.44) 100%
-    );
-    border-top: 1px solid rgba(255, 255, 255, 0.55);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+    background-color: var(--eco-sage-soft);
     padding: 72px 0;
 }
 
 .eco-section-heading {
-    color: #1E3E1B;
+    color: #2B4727;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
 .service-card {
-    border: 1px solid rgba(255, 255, 255, 0.72);
+    border: 1px solid #DCE8D3;
     border-radius: 22px;
     padding: 28px 26px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    background: #ffffff;
     transition: all 0.3s ease;
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow:
-        0 10px 26px rgba(15, 45, 20, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    box-shadow: 0 10px 26px rgba(43, 71, 39, 0.06);
 }
 
 .service-icon-box {
@@ -676,22 +659,18 @@ body.eco-framed-body {
    NEWS & UPDATES SECTION
    ========================================= */
 .news-section {
-    background-color: transparent;
+    background-color: var(--eco-surface);
     padding: 72px 0;
 }
 
 .news-card {
-    background: rgba(255, 255, 255, 0.76);
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    background: #ffffff;
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.72);
+    border: 1px solid #E3ECD9;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    box-shadow:
-        0 10px 26px rgba(15, 45, 20, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 24px rgba(31, 46, 30, 0.05);
 }
 
 .news-card:hover {
@@ -790,27 +769,9 @@ body.eco-framed-body {
    ========================================= */
 footer,
 .eco-page-shell footer {
-    background: linear-gradient(
-        135deg,
-        rgba(8, 36, 19, 0.90) 0%,
-        rgba(17, 56, 29, 0.88) 100%
-    );
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    background-color: var(--eco-footer);
     color: #FFFFFF !important;
     padding: 56px 0 28px 0;
-}
-
-/* Efek Glass Halus untuk Kartu Konten di Sub-Halaman */
-.eco-page-shell .card.bg-white,
-.eco-page-shell .profile-card,
-.eco-page-shell .testimonial-card,
-.eco-page-shell .org-card {
-    background: rgba(255, 255, 255, 0.76) !important;
-    backdrop-filter: blur(14px) saturate(150%);
-    -webkit-backdrop-filter: blur(14px) saturate(150%);
-    border-color: rgba(255, 255, 255, 0.72) !important;
 }
 
 footer h5,
