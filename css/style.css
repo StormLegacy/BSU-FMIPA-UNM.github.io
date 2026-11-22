@@ -732,16 +732,18 @@ body.eco-framed-body {
 }
 
 /* =========================================
-   FOOTER DEEP FOREST GREEN (KONTRAS TINGGI)
+   FOOTER DEEP FOREST GREEN (SELURUH TEKS PUTIH)
    ========================================= */
-footer {
+footer,
+.eco-page-shell footer {
     background-color: var(--eco-footer);
-    color: #F2F7F0;
+    color: #FFFFFF !important;
     padding: 56px 0 28px 0;
 }
 
-footer h5 {
-    color: #FFFFFF;
+footer h5,
+.eco-page-shell footer h5 {
+    color: #FFFFFF !important;
     font-weight: 700;
     margin-bottom: 16px;
 }
@@ -749,22 +751,32 @@ footer h5 {
 footer p,
 footer li,
 footer a,
-footer .text-light {
-    color: #EDF5EA !important;
-}
-
+footer span,
+footer div,
+footer small,
+.eco-page-shell footer p,
+.eco-page-shell footer li,
+.eco-page-shell footer a,
+.eco-page-shell footer span,
+.eco-page-shell footer .text-light,
+.eco-page-shell footer .text-muted,
+.eco-page-shell footer .text-white-50,
+.eco-page-shell footer .text-secondary,
+footer .text-light,
 footer .text-muted,
 footer .text-white-50,
 footer .text-secondary {
-    color: #D5E6D0 !important;
+    color: #FFFFFF !important;
 }
 
-footer .text-success {
+footer .text-success,
+.eco-page-shell footer .text-success {
     color: #9BE387 !important;
 }
 
-footer hr {
-    border-color: rgba(255, 255, 255, 0.22) !important;
+footer hr,
+.eco-page-shell footer hr {
+    border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
 .banner-box-style .text-muted,
