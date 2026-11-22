@@ -9,10 +9,11 @@
     --eco-sage-soft: #EBF3E3;
     --eco-surface: #FAFBF8;
     --eco-white: #FFFFFF;
-    --eco-text-dark: #1F2E1E;
-    --eco-text-muted: #5A6B58;
+    --eco-text-dark: #1B2A1A;
+    --eco-text-muted: #495A47;
     --eco-border: #DCE7D4;
     --eco-footer: #233822;
+    --bs-secondary-color: #495A47;
 }
 
 body {
@@ -22,9 +23,13 @@ body {
     margin: 0;
 }
 
-/* Framed Canvas Layout (Sesuai Referensi) */
+/* Framed Canvas Layout (Gradasi Hijau Teal ke Lime Sesuai Referensi) */
 body.eco-framed-body {
-    background: linear-gradient(180deg, #74946A 0%, #68875E 100%);
+    background:
+        radial-gradient(circle at 92% 85%, rgba(168, 224, 78, 0.55) 0%, rgba(168, 224, 78, 0) 48%),
+        radial-gradient(circle at 8% 12%, rgba(5, 53, 56, 0.75) 0%, rgba(5, 53, 56, 0) 50%),
+        linear-gradient(125deg, #06383B 0%, #165B44 38%, #479647 72%, #8FD144 100%);
+    background-attachment: fixed;
     padding: 24px 18px;
     min-height: 100vh;
 }
@@ -36,6 +41,18 @@ body.eco-framed-body {
     border-radius: 28px;
     box-shadow: 0 24px 60px rgba(20, 38, 18, 0.24);
     overflow-x: clip;
+}
+
+/* Ruang napas horizontal pada setiap halaman agar tulisan & elemen tidak menempel dinding luar */
+.eco-page-shell .container,
+.eco-page-shell .container-fluid {
+    padding-left: clamp(20px, 3.8vw, 52px) !important;
+    padding-right: clamp(20px, 3.8vw, 52px) !important;
+}
+
+/* Kontras teks muted di permukaan terang */
+.eco-page-shell .text-muted {
+    color: var(--eco-text-muted) !important;
 }
 
 /* =========================================
@@ -430,7 +447,7 @@ body.eco-framed-body {
     margin-top: -54px;
     position: relative;
     z-index: 10;
-    padding: 0 20px;
+    padding: 0 clamp(20px, 3.8vw, 52px);
 }
 
 .eco-sage-pill-shell {
@@ -690,12 +707,44 @@ body.eco-framed-body {
 }
 
 /* =========================================
-   FOOTER DEEP FOREST GREEN
+   FOOTER DEEP FOREST GREEN (KONTRAS TINGGI)
    ========================================= */
 footer {
     background-color: var(--eco-footer);
-    color: #ffffff;
-    padding: 56px 0 24px 0;
+    color: #F2F7F0;
+    padding: 56px 0 28px 0;
+}
+
+footer h5 {
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+footer p,
+footer li,
+footer a,
+footer .text-light {
+    color: #EDF5EA !important;
+}
+
+footer .text-muted,
+footer .text-white-50,
+footer .text-secondary {
+    color: #D5E6D0 !important;
+}
+
+footer .text-success {
+    color: #9BE387 !important;
+}
+
+footer hr {
+    border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+.banner-box-style .text-muted,
+.banner-box-style .text-light {
+    color: #EDF5EA !important;
 }
 
 .eco-page-shell > footer {
