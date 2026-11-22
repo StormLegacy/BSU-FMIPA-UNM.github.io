@@ -39,142 +39,13 @@ function saveBSUUser(user) {
     localStorage.setItem("bsu_user_data", JSON.stringify(user));
 }
 
-function loginBSU(nim, password, nama, prodi) {
-    const user = getBSUUser();
-    user.isLoggedIn = true;
-    if (nim) user.nim = nim;
-    if (nama) user.nama = nama;
-    if (prodi) user.prodi = prodi;
-    saveBSUUser(user);
-    return user;
-}
-
-function logoutBSU() {
-    if (confirm("Apakah Anda yakin ingin keluar dari akun Nasabah BSU FMIPA UNM?")) {
-        const user = getBSUUser();
-        user.isLoggedIn = false;
-        saveBSUUser(user);
-        alert("Anda telah berhasil keluar (Logout). Mengalihkan ke Beranda...");
-        window.location.href = "index.html";
-    }
-}
-
 // ==========================================
-// 2. RENDER NAVBAR AUTH & GLOBAL SEARCH
+// 2. MODAL PENCARIAN GLOBAL
 // ==========================================
-function updateNavbarAuth() {
-    const authContainers = document.querySelectorAll(".auth-nav-container");
-    const user = getBSUUser();
-
-    authContainers.forEach(container => {
-        if (user.isLoggedIn) {
-            const shortName = user.nama ? user.nama.trim().split(" ")[0] : "Nasabah";
-            container.innerHTML = `
-                <div class="dropdown">
-                    <button class="btn btn-outline-light btn-sm dropdown-toggle d-flex align-items-center gap-2 px-2 py-1" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="height: 32px; font-size: 0.85rem;">
-                        <i class="fa-solid fa-circle-user text-success fs-6"></i>
-                        <span class="d-none d-sm-inline fw-semibold">${shortName}</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end shadow border-0 user-dropdown-custom">
-                        <li class="user-dropdown-header-custom">
-                            <div class="user-name">${user.nama || 'Nasabah BSU'}</div>
-                            <div class="user-role">${user.status || 'Civitas MIPA'}</div>
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="profile.html">
-                                <i class="fa-solid fa-user me-2 text-success"></i>Profil & Saldo
-                            </a>
-                        </li>
-                        <li><hr class="dropdown-divider my-1 border-secondary"></li>
-                        <li>
-                            <button class="dropdown-item text-danger d-flex align-items-center" onclick="logoutBSU()">
-                                <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Keluar (Logout)
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            `;
-        } else {
-            container.innerHTML = `
-                <a href="login.html" class="btn btn-auth-nav btn-sm px-3" style="height: 32px; font-size: 0.85rem; display: inline-flex; align-items: center;">
-                    <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Masuk / Login
-                </a>
-            `;
-        }
-    });
-}
-
-// Handler khusus untuk tombol "Buka Profil & Cek Saldo"
-function checkProfileAccess(event) {
-    if (event) event.preventDefault();
-    const user = getBSUUser();
-    if (user && user.isLoggedIn) {
-        window.location.href = "profile.html";
-    } else {
-        window.location.href = "login.html";
-    }
-}
-
-// Modal HTML Pencarian & Login Universal
 function injectUniversalModals() {
-    if (document.getElementById("loginModal")) return;
+    if (document.getElementById("searchResultModal")) return;
 
     const modalHTML = `
-    <!-- Modal Login Nasabah -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 border-0 shadow">
-                <div class="modal-header border-0 pb-0">
-                    <div class="d-flex align-items-center gap-2">
-                        <img src="images/logo_BSU.png" alt="BSU" style="height: 35px;">
-                        <h5 class="modal-title fw-bold" id="loginModalLabel">Masuk Akun Nasabah</h5>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <p class="text-muted small mb-4">Area Pengguna / Nasabah Bank Sampah Unit FMIPA UNM. Silakan masuk menggunakan NIM/NIP Anda.</p>
-                    
-                    <form id="universalLoginForm">
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">NIM / NIP Civitas Akademika</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light"><i class="fa-solid fa-id-card text-success"></i></span>
-                                <input type="text" class="form-control" id="loginNIM" placeholder="Contoh: 210101502001" required value="210101502001">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Kata Sandi</label>
-                            <div class="input-group">
-                                <span class="input-group-text bg-light"><i class="fa-solid fa-lock text-success"></i></span>
-                                <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required value="bsufmipa2026">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label small fw-bold">Peran Civitas</label>
-                            <select class="form-select" id="loginRole">
-                                <option value="Mahasiswa Aktif" selected>Mahasiswa FMIPA UNM</option>
-                                <option value="Dosen">Dosen FMIPA UNM</option>
-                                <option value="Tenaga Kependidikan">Tenaga Kependidikan (Tendik)</option>
-                                <option value="Mitra Eksternal">Mitra / Masyarakat Eksternal</option>
-                            </select>
-                        </div>
-                        <div class="d-grid gap-2 mb-3">
-                            <button type="submit" class="btn btn-green fw-bold py-2">
-                                <i class="fa-solid fa-right-to-bracket me-1"></i> Masuk Sekarang
-                            </button>
-                            <button type="button" class="btn btn-outline-success btn-sm" id="btnQuickDemoLogin">
-                                <i class="fa-solid fa-bolt me-1"></i> Quick Demo Login (Civitas MIPA)
-                            </button>
-                        </div>
-                    </form>
-                    <div class="text-center small text-muted">
-                        Belum punya akun nasabah? Hubungi pengurus di Sekretariat BSU Kampus Parantambung atau via <a href="contact.html" class="text-success fw-bold text-decoration-none">Hubungi Kami</a>.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Hasil Pencarian Global -->
     <div class="modal fade" id="searchResultModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -197,33 +68,6 @@ function injectUniversalModals() {
     `;
 
     document.body.insertAdjacentHTML("beforeend", modalHTML);
-
-    // Event listener login form
-    const loginForm = document.getElementById("universalLoginForm");
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const nim = document.getElementById("loginNIM").value.trim();
-            loginBSU(nim, "password");
-            const modalEl = document.getElementById("loginModal");
-            const modal = bootstrap.Modal.getInstance(modalEl);
-            if (modal) modal.hide();
-            alert("Login Berhasil! Selamat datang di Area Nasabah BSU FMIPA UNM.");
-            window.location.href = "profile.html";
-        });
-    }
-
-    // Quick demo login
-    const btnDemo = document.getElementById("btnQuickDemoLogin");
-    if (btnDemo) {
-        btnDemo.addEventListener("click", function () {
-            loginBSU("210101502001", "bsufmipa2026", "Andi M. Resky Pratama", "Pendidikan Kimia");
-            const modalEl = document.getElementById("loginModal");
-            const modal = bootstrap.Modal.getInstance(modalEl);
-            if (modal) modal.hide();
-            window.location.href = "profile.html";
-        });
-    }
 }
 
 // Global Search Handler
@@ -238,8 +82,7 @@ function initGlobalSearch() {
         { title: "Profil & Struktur Organisasi BSU FMIPA UNM", desc: "Sejarah, latar belakang ekonomi sirkular, dan struktur organisasi pengurus.", url: "about.html" },
         { title: "Testimoni Nasabah & Civitas Akademika", desc: "Pengalaman mahasiswa, dosen, dan pengelola kantin menabung sampah di BSU.", url: "testimoni.html" },
         { title: "Kontak Pengurus (Humaerah & Amel)", desc: "Nomor WhatsApp, telepon, lokasi kampus Parantambung Jl. Daeng Tata Makassar.", url: "contact.html" },
-        { title: "Profil Saya (Saldo & Riwayat Penyetoran)", desc: "Informasi saldo tabungan rupiah, total poin, dan riwayat setoran sampah.", url: "profile.html" },
-        { title: "Masuk / Login Akun Nasabah", desc: "Halaman autentikasi civitas akademika untuk mengakses buku tabungan sampah.", url: "login.html" }
+        { title: "Profil Saya (Saldo & Riwayat Penyetoran)", desc: "Informasi saldo tabungan rupiah, total poin, dan riwayat setoran sampah.", url: "profile.html" }
     ];
 
     searchForms.forEach(form => {
@@ -606,7 +449,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     injectUniversalModals();
-    updateNavbarAuth();
     initGlobalSearch();
     initProfileDashboard();
     initGeneralFormFeedback();
