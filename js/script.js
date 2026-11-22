@@ -77,11 +77,11 @@ function initGlobalSearch() {
     const SEARCH_INDEX = [
         { title: "Pemilahan Sampah Organik (Kompos & Eco-enzyme)", desc: "Pengolahan limbah sisa makanan, daun kering kampus menjadi kompos & eco-enzyme.", url: "work.html#organik" },
         { title: "Penerimaan Sampah Anorganik (Plastik, Kertas, Logam)", desc: "Pengumpulan botol plastik, kardus, kaleng aluminium untuk didaur ulang bernilai rupiah.", url: "work.html#anorganik" },
-        { title: "Cakupan Layanan Internal & Eksternal", desc: "Melayani mahasiswa, dosen, tendik, kantin FMIPA UNM dan masyarakat sekitar Parantambung.", url: "work.html#cakupan" },
+        { title: "Cakupan Layanan Internal & Eksternal", desc: "Melayani mahasiswa, dosen, tendik, kantin FMIPA UNM dan masyarakat sekitar Parangtambung.", url: "work.html#cakupan" },
         { title: "Berita & Kegiatan BSU FMIPA UNM", desc: "Artikel peresmian BSU, inovasi ekonomi sirkular, dan pembaruan kegiatan civitas.", url: "news.html" },
         { title: "Profil & Struktur Organisasi BSU FMIPA UNM", desc: "Sejarah, latar belakang ekonomi sirkular, dan struktur organisasi pengurus.", url: "about.html" },
         { title: "Testimoni Nasabah & Civitas Akademika", desc: "Pengalaman mahasiswa, dosen, dan pengelola kantin menabung sampah di BSU.", url: "testimoni.html" },
-        { title: "Kontak Pengurus (Humaerah & Amel)", desc: "Nomor WhatsApp, telepon, lokasi kampus Parantambung Jl. Daeng Tata Makassar.", url: "contact.html" },
+        { title: "Kontak Pengurus (Humaerah & Amel)", desc: "Nomor WhatsApp, telepon, lokasi kampus Parangtambung Jl. Daeng Tata Makassar.", url: "contact.html" },
         { title: "Profil Saya (Saldo & Riwayat Penyetoran)", desc: "Informasi saldo tabungan rupiah, total poin, dan riwayat setoran sampah.", url: "profile.html" }
     ];
 
