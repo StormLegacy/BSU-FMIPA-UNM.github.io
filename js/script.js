@@ -445,7 +445,7 @@ function initScrollAndClickEffects() {
 
     function handleScrollState() {
         const y = window.scrollY || document.documentElement.scrollTop;
-        if (navbar) navbar.classList.toggle("navbar-scrolled", y >= 20);
+        if (navbar) navbar.classList.toggle("navbar-scrolled", y > 2);
         if (backToTopBtn) backToTopBtn.classList.toggle("show", y > 300);
     }
     window.addEventListener("scroll", handleScrollState, { passive: true });

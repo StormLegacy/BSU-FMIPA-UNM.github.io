@@ -98,17 +98,19 @@ body.eco-framed-body {
     border-bottom: 1px solid #E8F0E2;
     padding-top: 12px;
     padding-bottom: 12px;
-    transition: border-radius 0.2s ease, box-shadow 0.2s ease;
+    z-index: 1025 !important;
 }
 
 .eco-page-shell > .navbar-dark-custom {
+    top: -1px;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
 }
 
 .eco-page-shell > .navbar-dark-custom.navbar-scrolled {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    box-shadow: 0 -4px 0 0 #FFFFFF, 0 8px 24px rgba(31, 46, 30, 0.12) !important;
 }
 
 .navbar-brand {
