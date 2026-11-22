@@ -341,7 +341,63 @@ function initGeneralFormFeedback() {
 }
 
 // ==========================================
-// 5. EFEK SCROLL & KLIK SEDERHANA
+// 5. SINKRONISASI DASHBOARD PORTAL PUBLIK BSU
+// ==========================================
+const PORTAL_PUBLIK_EXEC_URL = "https://script.google.com/macros/s/AKfycbxKydERj5VtycVGqyDssFqdbUG7oQePoVGuupXJqquHbOeoUBJorkgo30zbW4shr19-5w/exec";
+
+function initPortalDashboardSync() {
+    const elTotalKg = document.getElementById("portalTotalKg");
+    const elDepositCount = document.getElementById("portalDepositCount");
+    const elCategoryCount = document.getElementById("portalCategoryCount");
+    const elSyncStatus = document.getElementById("portalSyncStatus");
+
+    if (!elTotalKg || !elDepositCount || !elCategoryCount) return;
+
+    const formatIDNumber = (val) => {
+        const n = Number(val);
+        if (Number.isNaN(n)) return String(val);
+        return n.toLocaleString("id-ID", { maximumFractionDigits: 2 });
+    };
+
+    const applyPortalStats = (stats, isLive) => {
+        if (stats.totalKg !== undefined) elTotalKg.textContent = formatIDNumber(stats.totalKg);
+        if (stats.depositCount !== undefined) elDepositCount.textContent = formatIDNumber(stats.depositCount);
+        if (stats.categoryCount !== undefined) elCategoryCount.textContent = formatIDNumber(stats.categoryCount);
+        if (elSyncStatus && isLive && stats.updated) {
+            elSyncStatus.textContent = `Live • ${stats.updated}`;
+        }
+    };
+
+    // Tampilkan cache terakhir jika ada
+    try {
+        const cached = localStorage.getItem("bsu_portal_dashboard_cache");
+        if (cached) applyPortalStats(JSON.parse(cached), false);
+    } catch (_) {}
+
+    // Ambil data live dari Portal Publik (JSON endpoint ?format=json)
+    fetch(`${PORTAL_PUBLIK_EXEC_URL}?format=json`, { method: "GET", mode: "cors" })
+        .then(res => {
+            const ct = res.headers.get("content-type") || "";
+            if (!res.ok || !ct.includes("application/json")) {
+                throw new Error("Endpoint belum mengembalikan JSON");
+            }
+            return res.json();
+        })
+        .then(data => {
+            if (data && (data.totalKg !== undefined || data.depositCount !== undefined)) {
+                applyPortalStats(data, true);
+                try {
+                    localStorage.setItem("bsu_portal_dashboard_cache", JSON.stringify(data));
+                } catch (_) {}
+            }
+        })
+        .catch(() => {
+            // Fallback diam ke data Portal Publik terbaru yang tertampil di HTML
+        });
+}
+
+// ==========================================
+// 6. EFEK SCROLL & KLIK SEDERHANA
 // ==========================================
 function initScrollAndClickEffects() {
     // 1) Scroll Reveal (Fade-Up saat elemen masuk layar)
@@ -452,5 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
     initGlobalSearch();
     initProfileDashboard();
     initGeneralFormFeedback();
+    initPortalDashboardSync();
     initScrollAndClickEffects();
 });
